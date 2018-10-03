@@ -1,12 +1,12 @@
 # PURE FlashArray details
 RedDotX:
   ip:       10.226.224.112
-  array_token: aa009fd2-7686-7d48-8698-26b7eb2ae841
+  array_token: "aa009fd2-7686-7d48-8698-26b7eb2ae841"
   api_version: 1.9
 
 RedDot:
   ip:       10.226.116.122
-  array_token: 4ac5c338-a688-3c77-d6cb-dcfd3a5b2424
+  array_token: "4ac5c338-a688-3c77-d6cb-dcfd3a5b2424"
   api_version: 1.9
   
 #se_EMEA_EBC_m20:
