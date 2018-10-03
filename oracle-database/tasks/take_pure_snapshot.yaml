@@ -1,9 +1,9 @@
 ---
-- name: Create snapshot of database volumes with suffix {{ suffix }}
+- name: "Create snapshot of database volumes with suffix {{ suffix }}"
   purefa_snap:
     name: "{{ source }}"
     suffix: "{{ suffix }}" 
     fa_url: "{{ array.ip }}"
-    api_token: "{{ array.array_token }}"
+    api_token: "{{ array.api_token }}"
     state: present
  
