@@ -1,0 +1,12 @@
+---
+- name: Overwrite existing pure volume {{ item.value.target }} with snapshot foo.snap
+  purefa_snap:
+    name: "{{ item.value.source }}"
+    suffix: "{{ suffix }}"
+    target: "{{ item.value.target }}"
+    overwrite: true
+    fa_url: "{{ array.ip }}"
+    api_token: "{{ array.array_token }}"
+    state: copy
+  with_dict: "{{ volmap }}"
+  

@@ -29,15 +29,20 @@
 #    - include: tasks/create_admin.yaml
 #      tags: setup
 
-# Create Pure session
-    - include: tasks/create_session.yaml
-      run_once: yes
+# Create Pure session (not neccesary if using built in Pure methods)
+#    - include: tasks/create_session.yaml
+#     tags: connect
+#      run_once: yes
     
 #    - pause:
 #        prompt: "Look in /tmp"
 
 # Take Snapshot of database volumes
-    - include: tasks/take_snapshot.yaml
+#   - include: tasks/take_snapshot.yaml
+#      run_once: yes
+
+# Take Snapshot of database volumes
+    - include: tasks/take_pure_snapshot.yaml
       run_once: yes
 
 # Stop Target Database
@@ -53,9 +58,13 @@
       tags: unmount
 
 # Copy Snapshot to target database volume
-    - include: tasks/copy_volume.yaml
-      tags: refresh
+#   - include: tasks/copy_volume.yaml
+#      tags: refresh
 
+# Copy Overwrite Snapshot to target database volume
+    - include: tasks/overwrite_pure_volume.yaml
+      tags: refresh
+      
 #    - meta: end_play
 
 # Mount Target volume
@@ -90,5 +99,9 @@
 #        chdir: "{{ tgt_dir }}"
 
 # Delete Snapshot of database volumes
-    - include: tasks/delete_snapshot.yaml
+#    - include: tasks/delete_snapshot.yaml
+#      run_once: yes
+
+# Delete and eradicate Snapshot of database volumes
+    - include: tasks/delete_pure_snapshot.yaml
       run_once: yes

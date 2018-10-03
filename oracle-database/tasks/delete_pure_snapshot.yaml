@@ -1,0 +1,10 @@
+---
+- name: Delete and eradictae snapshot of database volumes with suffix {{ suffix }}
+  purefa_snap:
+    name: "{{ source }}"
+    suffix: "{{ suffix }}" 
+    eradicate: true
+    fa_url: "{{ array.ip }}"
+    api_token: "{{ array.ip }}"
+    state: absent
+ 
