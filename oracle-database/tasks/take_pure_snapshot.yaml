@@ -1,4 +1,7 @@
 ---
+- debug:
+    msg: "variables are name {{ source }} suffix {{ suffix }} fa_url {{ array.ip }} api_token {{ array.api_token }}"
+    
 - name: "Create snapshot of database volumes with suffix {{ suffix }} ip {{ array.ip }} api_token {{ array.api_token }}"
   purefa_snap:
     name: "{{ source }}"
