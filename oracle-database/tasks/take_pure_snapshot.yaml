@@ -1,12 +1,12 @@
 ---
 - debug:
-    msg: "variables are name {{ source }} suffix {{ suffix }} fa_url {{ RedDotX.ip }} api_token {{ RedDotX.api_token }}"
+    msg: "variables are name {{ source }} suffix {{ suffix }} fa_url {{ fa.ip }} api_token {{ fa.api_token }}"
     
 - name: "Create snapshot of database volumes with suffix {{ suffix }}"
   purefa_snap:
     name: "{{ source }}"
     suffix: "{{ suffix }}" 
-    fa_url: "{{ array.ip }}"
-    api_token: "{{ array.api_token }}"
+    fa_url: "{{ fa.ip }}"
+    api_token: "{{ fa.api_token }}"
     state: present
  
