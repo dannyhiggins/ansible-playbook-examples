@@ -4,6 +4,6 @@
     name: "{{ source }}"
     suffix: "{{ suffix }}" 
     fa_url: "{{ array.ip }}"
-    api_token: "{{ array.ip }}"
+    api_token: "{{ array.array_token }}"
     state: present
  
