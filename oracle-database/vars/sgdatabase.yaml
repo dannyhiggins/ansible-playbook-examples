@@ -18,7 +18,7 @@ tgt_gu: grid
 tgt_gh: /u01/app/grid/product/12cR2
 tgt_asm_sid: +ASM
 
-array: "{{ RedDotX }}"
+fa: RedDotX
 source: "{{ sourceVol }}"
 target: "{{ targetVol }}"
 volmap: "{{ tgtmap }}"
