@@ -1,10 +1,21 @@
 # PURE FlashArray details
-se_EMEA_EBC_m20:
-  ip:      10.225.112.80
-  array_token: c4eb5b21-4122-b871-8b0f-684bf72b5283
+RedDotX:
+  ip:      10.226.224.112
+  array_token: aa009fd2-7686-7d48-8698-26b7eb2ae841
   api_version: 1.9
 
-se_EMEA_EBC_fa420:
-  ip:      10.225.112.12
-  array_token: cef628f0-831b-30b9-4494-4e8ea56c207c
+RedDot:
+  ip:      10.226.116.122
+  array_token: 4ac5c338-a688-3c77-d6cb-dcfd3a5b2424
   api_version: 1.9
+  
+#se_EMEA_EBC_m20:
+#  ip:      10.225.112.80
+#  array_token: c4eb5b21-4122-b871-8b0f-684bf72b5283
+#  api_version: 1.9
+
+#se_EMEA_EBC_fa420:
+#  ip:      10.225.112.12
+#  array_token: cef628f0-831b-30b9-4494-4e8ea56c207c
+#  api_version: 1.9
+  

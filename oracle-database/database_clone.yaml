@@ -13,7 +13,7 @@
   hosts: tgtservers 
   vars_files:
     - vars/arrays.yaml
-    - vars/database.yaml 
+    - vars/sgdatabase.yaml 
 
   tasks:
 # Set Suffix
@@ -26,8 +26,8 @@
       tags: setup
 
 # Create Oracle admin directories
-    - include: tasks/create_admin.yaml
-      tags: setup
+#    - include: tasks/create_admin.yaml
+#      tags: setup
 
 # Create Pure session
     - include: tasks/create_session.yaml
@@ -45,7 +45,11 @@
       tags: shutdown
 
 # Unmount Target volume
-    - include: tasks/unmount_volume.yaml
+#- include: tasks/unmount_volume.yaml
+#      tags: unmount
+
+# Unmount Target ASM Disk Group 
+    - include: tasks/unmountASMdg.yaml
       tags: unmount
 
 # Copy Snapshot to target database volume
@@ -55,31 +59,35 @@
 #    - meta: end_play
 
 # Mount Target volume
-    - include: tasks/mount_volume.yaml
+#    - include: tasks/mount_volume.yaml
+#      tags: mount
+      
+# Mount Target ASM Disk Group 
+    - include: tasks/mountASMdg.yaml
       tags: mount
 
 # Startup Mount Target Database
     - include: tasks/5_startup.yaml
       tags: startup
 
-# Change Database Name
-    - name: Change database name 
-      shell: '{{ tgt_dir }}/6_dbnewid.sh > 6_dbnewid.log 2>&1'
-      args:
-        chdir: "{{ tgt_dir }}"
+# Change Database Name (resteting db_unique_name for now so not in use)
+#    - name: Change database name 
+#      shell: '{{ tgt_dir }}/6_dbnewid.sh > 6_dbnewid.log 2>&1'
+#      args:
+#        chdir: "{{ tgt_dir }}"
 
 # Rename target database file names
-    - name: Rename Target database directories
-      shell: 'mv -v {{ item.value.sourced }} {{ item.value.targetd }}'
-      args:
-        chdir: "{{ tgt_dir }}"
-      with_dict: "{{ dirmap }}"
+#    - name: Rename Target database directories
+#      shell: 'mv -v {{ item.value.sourced }} {{ item.value.targetd }}'
+#      args:
+#        chdir: "{{ tgt_dir }}"
+#      with_dict: "{{ dirmap }}"
     
 # Rename target database file names
-    - name: Rename Target database file names
-      shell: '{{ tgt_dir }}/8_rendbfiles.sh > 8_rendbfiles.log 2>&1'
-      args:
-        chdir: "{{ tgt_dir }}"
+#    - name: Rename Target database file names
+#      shell: '{{ tgt_dir }}/8_rendbfiles.sh > 8_rendbfiles.log 2>&1'
+#      args:
+#        chdir: "{{ tgt_dir }}"
 
 # Delete Snapshot of database volumes
     - include: tasks/delete_snapshot.yaml

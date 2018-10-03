@@ -1,0 +1,9 @@
+source {{ tgt_gu }}/.bash_profile
+export ORACLE_SID={{ tgt_asm_sid }}
+# export ORACLE_HOME={{ tgt_oh }}
+# export PATH=$PATH:$ORACLE_HOME/bin
+
+sqlplus -s / as sysasm << EOF
+alter diskgroup {{ targetDG }} dismount;
+exit
+EOF

@@ -1,0 +1,18 @@
+---
+# Check to see if ASM DG's are mounted?
+- name: check to see if ASM disk groups are mounted 
+  shell: asmcmd lsdg | egrep " {{ targetVol.vol1.dgname }}| {{ targetVol.vol2.dgname }}"
+  register: asmcheck
+  ignore_errors: True
+  become: True
+  become_user: grid
+  become_method: sudo
+
+# Shutdown target database
+- name: shutdown ASM disk groups 
+  shell: '{{ tgt_dir }}/unmountASMdg.sh > unmountASMdg.log 2>&1'
+  args:
+    chdir: "{{ tgt_dir }}"
+  loop: "{{ targetDG }}"    
+  when: asmcheck.stdout != ""
+

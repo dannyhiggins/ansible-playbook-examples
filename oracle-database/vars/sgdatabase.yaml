@@ -1,0 +1,59 @@
+---
+# Database clone variables
+# 
+db_domain: puresg.com
+
+src_db: SOURCEDB
+src_init: "init{{ src_db }}.ora"
+src_svc: "{{ src_db }}.{{ db_domain }}"
+
+tgt_db: TARGETDB
+tgt_init: "init{{ tgt_db }}.ora"
+tgt_svc: "{{ tgt_db }}.{{ db_domain }}"
+tgt_ob: /u01/app/oracle/global
+tgt_oh: "/u01/app/oracle/product/db/11gR2"
+tgt_dir: ~/.ansible
+sys_pwd: sys123
+tgt_gu: grid
+tgt_gh: /u01/app/grid/product/12cR2
+tgt_asm_sid: +ASM
+
+array: "{{ RedDotX }}"
+source: "{{ sourceVol }}"
+target: "{{ targetVol }}"
+volmap: "{{ tgtmap }}"
+
+
+#Source database volumes
+sourceVol:
+- m_UCS_Oracle_ora1_RDM_CONTROL_REDO
+- m_UCS_Oracle_ora1_RDM_DATA
+
+#Target database ASM Disk Groups
+targetDG:
+- CONTROL_REDO
+- DATA
+
+# Target database volumes 
+targetVol:
+  vol1:
+    dgname: CONTROL_REDO
+    volname:  m_UCS_Oracle_ora2_RDM_DATA 
+    label:  CONTROL_REDO01 
+    device:  /dev/sdc1
+  vol2:
+    dgname: DATA
+    volname:  m_UCS_Oracle_ora2_RDM_DATA 
+    label:  DATA01 
+    device:  /dev/sdd1
+
+#Target database volume mappings
+tgtmap:
+  vol1:
+    source:  m_UCS_Oracle_ora1_RDM_CONTROL_REDO
+    target:  "m_UCS_Oracle_{{ inventory_hostname }}_RDM_CONTROL_REDO"
+  vol2:
+    source:  m_UCS_Oracle_ora1_RDM_DATA
+    target:  "m_UCS_Oracle_{{ inventory_hostname }}_RDM_DATA"
+
+

@@ -1,14 +1,12 @@
 source ~/.bash_profile
-export ORACLE_SID={{ src_db }}
-export ORACLE_HOME={{ tgt_oh }}
-export PATH=$PATH:$ORACLE_HOME/bin
+# export ORACLE_SID={{ src_db }}
+# export ORACLE_HOME={{ tgt_oh }}
+# export PATH=$PATH:$ORACLE_HOME/bin
 
 sqlplus -s / as sysdba << EOF
-startup pfile='{{ tgt_oh }}/dbs/{{ src_init }}'
-alter system switch logfile;
-@rename.sql
-alter database disable block change tracking;
-shutdown immediate;
-startup mount pfile='{{ tgt_oh }}/dbs/{{ src_init }}'
+startup mount
+alter system set db_unique_name='{{ tgt_db }}' scope=spfile;
+shutdown abort
+startup
 exit
 EOF
