@@ -5,8 +5,8 @@
     suffix: "{{ suffix }}"
     target: "{{ item.value.target }}"
     overwrite: true
-    fa_url: "{{ array.ip }}"
-    api_token: "{{ array.array_token }}"
+    fa_url: "{{ RedDotX.ip }}"
+    api_token: "{{ RedDotX.array_token }}"
     state: copy
   with_dict: "{{ volmap }}"
   
