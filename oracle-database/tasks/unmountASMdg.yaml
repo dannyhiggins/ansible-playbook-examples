@@ -1,7 +1,7 @@
 ---
 # Check to see if ASM DG's are mounted?
 - name: check to see if ASM disk groups are mounted 
-  shell: sudo -iu {{ tgt_gu }} asmcmd lsdg | egrep " {{ targetVol.vol1.dgname }}| {{ targetVol.vol2.dgname }}"
+  shell: ~/.basrc && asmcmd lsdg | egrep " {{ targetVol.vol1.dgname }}| {{ targetVol.vol2.dgname }}"
   register: asmcheck
   ignore_errors: True
   become: True
