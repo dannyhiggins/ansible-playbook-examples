@@ -3,6 +3,7 @@
 - name: check to see if database is up 
   shell: ps -ef | grep -w [o]ra_smon_{{ tgt_db }}
   register: dbcheck
+  failed_when: dbcheck.rc ==0 or dbcheck.rc >=2
   ignore_errors: True
 
 # Startup target database
