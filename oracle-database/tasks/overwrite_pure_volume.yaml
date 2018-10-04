@@ -1,5 +1,5 @@
 ---
-- name: Overwrite existing pure volume {{ item.value.target }} with snapshot foo.snap
+- name: "Overwrite existing pure volume {{ item.value.target }} with snapshot {{ item.value.source }}.{{ suffix }}"
   purefa_snap:
     name: "{{ item.value.source }}"
     suffix: "{{ suffix }}"
