@@ -6,7 +6,7 @@
     target: "{{ item.value.target }}"
     overwrite: true
     fa_url: "{{ RedDotX.ip }}"
-    api_token: "{{ RedDotX.array_token }}"
+    api_token: "{{ RedDotX.api_token }}"
     state: copy
-  with_dict: "{{ tgtmap }}"
+  with_dict: "{{ volmap }}"
   
