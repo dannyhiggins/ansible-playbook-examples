@@ -14,6 +14,6 @@
   shell: '{{ tgt_dir }}/unmountASMdg.sh > unmountASMdg.log 2>&1'
   args:
     chdir: "{{ tgt_dir }}"
-  loop: "{{ targetDG }}"    
+#  loop: "{{ targetDG }}"    
   when: asmcheck.stdout != ""
 
