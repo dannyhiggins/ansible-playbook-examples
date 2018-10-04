@@ -4,7 +4,7 @@
     name: "{{ source }}"
     suffix: "{{ suffix }}" 
     eradicate: true
-    fa_url: "{{ array.ip }}"
-    api_token: "{{ array.ip }}"
+    fa_url: "{{ RedDotX.ip }}"
+    api_token: "{{ RedDotX.api_token }}"
     state: absent
  
