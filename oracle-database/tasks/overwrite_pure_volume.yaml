@@ -8,5 +8,5 @@
     fa_url: "{{ RedDotX.ip }}"
     api_token: "{{ RedDotX.array_token }}"
     state: copy
-  with_dict: "{{ volmap }}"
+  with_dict: "{{ tgtmap }}"
   
