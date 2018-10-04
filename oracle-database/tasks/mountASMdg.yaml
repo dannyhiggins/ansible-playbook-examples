@@ -3,6 +3,7 @@
 - name: check to see if ASM disk groups are mounted 
   shell: sudo -iu {{ tgt_gu}} asmcmd lsdg | egrep " {{ targetVol.vol1.dgname }}| {{ targetVol.vol2.dgname }}"
   register: asmcheck
+  failed_when: asmcheck.rc ==0 or asmcheck.rc >=2
   ignore_errors: True
 
 # Mount ASM disk groups
