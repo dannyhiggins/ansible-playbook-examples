@@ -1,12 +1,13 @@
 ---
 # Check to see if ASM DG's are mounted?
 - name: check to see if ASM disk groups are mounted 
-  shell: ~/.bashrc && {{ tgt_gh }}/bin/asmcmd lsdg | egrep " {{ targetVol.vol1.dgname }}| {{ targetVol.vol2.dgname }}"
+#  shell: ~/.bashrc && {{ tgt_gh }}/bin/asmcmd lsdg | egrep " {{ targetVol.vol1.dgname }}| {{ targetVol.vol2.dgname }}"
+  shell: sudo -iu {{ tgt_gu}} asmcmd lsdg | egrep " {{ targetVol.vol1.dgname }}| {{ targetVol.vol2.dgname }}"
   register: asmcheck
   ignore_errors: True
-  become: True
-  become_user: grid
-  become_method: sudo
+#  become: True
+#  become_user: grid
+#  become_method: sudo
 
 # Shutdown target database
 - name: shutdown ASM disk groups 
