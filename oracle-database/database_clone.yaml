@@ -108,5 +108,4 @@
       
 # Send Slack Notification
     - include: tasks/notify.yaml
-      tags: notify 
-      
+      tags: notify

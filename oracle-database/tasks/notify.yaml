@@ -1,6 +1,5 @@
 ---
-# Send slack notification
 - name: Send slack notification 
-   shell: slack_notify.sh >> slack_notify.log 
+  shell: slack_notify.sh >> slack_notify.log 
   args:
     chdir: /home/oracle/clone_demo
